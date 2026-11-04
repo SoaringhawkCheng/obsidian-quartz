@@ -1,8 +1,8 @@
 ---
 publish: true
-title: 「实战Java虚拟机：JVM故障诊断与性能优化」[DOING]
+title: 「实战Java虚拟机：JVM故障诊断与性能优化」
 created: 2021-11-06 19:57:01
-modified: 2026-11-04T18:51:58.700Z
+modified: 2026-11-04T21:05:10.183Z
 ---
 
 # 一、初探Java虚拟机

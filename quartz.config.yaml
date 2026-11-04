@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: The Inner Maze
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics:
     provider: plausible
-  locale: en-US
-  baseUrl: SoaringhawkCheng.github.io/obsidian-quartz
+  locale: zh-CN
+  baseUrl: obsidian-quartz-soaringhawkcheng.pages.dev
   ignorePatterns:
     - private
     - templates

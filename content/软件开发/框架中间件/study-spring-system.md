@@ -2,7 +2,7 @@
 publish: true
 title: 「Spring框架体系」学习笔记
 created: 2023-04-03 18:18:51
-modified: 2026-11-04T19:24:22.153Z
+modified: 2026-11-04T20:22:59.377Z
 ---
 
 # 一、Spring
@@ -11,17 +11,43 @@ modified: 2026-11-04T19:24:22.153Z
 
 ## 2.1 Jar包启动原理
 
-我的笔记 [Jar包启动流程笔记](https://note.youdao.com/s/8fUuaOQp)
+### 2.1.1 目录结构
+
+BOOT-INF/classes：目录存放应用编译后的class文件。
+
+BOOT-INF/lib：目录存放应用依赖的第三方JAR包文件。
+
+META-INF：目录存放应用打包信息(Maven坐标、pom文件)和MANIFEST.MF文件。
+
+org：目录存放SpringBoot相关class文件。
+
+![[软件开发/框架中间件/素材附件/Pasted image 20261105041824.png]]
+
+### 2.1.2 清单文件 MANIFEST.MF
+
+![[软件开发/框架中间件/素材附件/Pasted image 20261105041831.png]]
+
+Main-Class是入口类
+
+### 2.1.3 索引文件 idx
+
+classpath.idx: jar包添加到classpath的顺序
+
+![[软件开发/框架中间件/素材附件/Pasted image 20261105041837.png]]
+
+layers.idx: 允许将 jar 拆分为逻辑层以创建Docker/OCI镜像
+
+![[软件开发/框架中间件/素材附件/Pasted image 20261105041842.png]]
 
 ## 2.2 Spring Boot启动原理
 
-我的笔记 [Spring Boot启动源码分析笔记](https://note.youdao.com/s/CFcCjew)
+[[「Spring Boot启动源码」学习笔记]]
 
 # 三、Spring Cloud
 
 ## 3.1 Sentinel
 
-我的笔记 [link](https://note.youdao.com/s/XMY1uWU1)
+[[「Spring Cloud Sentinel原理」学习笔记]]
 
 # 四、其他一些零散稳定
 

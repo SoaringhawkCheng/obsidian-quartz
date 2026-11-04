@@ -4,6 +4,10 @@ publish: true
 image: avatar.jpg
 socialImage: avatar.jpg
 ---
+
+<img src="/avatar.jpg" style="width:120px;border-radius:50%;float:left;margin:0 16px 16px 0;" alt="avatar">
+
+
 > Consciousness isn’t a journey upward, but a journey inward.
 > 
 > 意识不是向上攀登的旅程，而是向内探寻的路途。

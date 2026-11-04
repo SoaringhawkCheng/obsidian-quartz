@@ -2,9 +2,7 @@
 publish: true
 title: 「Linux内核设计与实现&深入理解Linux内核」学习笔记
 created: 2020-05-01 22:17:27
-modified: 2026-11-04T17:59:03.541Z
-tags:
-  - os
+modified: 2026-11-04T19:49:43.602Z
 ---
 
 ## 绪论

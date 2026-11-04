@@ -1,6 +1,8 @@
 ---
 title: 迷宫入口
 publish: true
+image: avatar.jpg
+socialImage: avatar.jpg
 ---
 > Consciousness isn’t a journey upward, but a journey inward.
 > 

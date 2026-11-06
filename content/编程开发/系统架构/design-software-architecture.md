@@ -1,8 +1,8 @@
 ---
 publish: true
-title: 「软件架构设计：大型网站技术架构与业务架构融合之道」学习笔记[DOING]
+title: 「软件架构设计：大型网站技术架构与业务架构融合之道」学习笔记
 created: 2020-05-24 21:06:15
-modified: 2026-11-06T05:21:34.649Z
+modified: 2026-11-06T05:33:36.147Z
 ---
 
 [分布式共识博客](http://blog.kongfy.com/2016/05/%E5%88%86%E5%B8%83%E5%BC%8F%E5%85%B1%E8%AF%86consensus%EF%BC%9Aviewstamped%E3%80%81raft%E5%8F%8Apaxos/)

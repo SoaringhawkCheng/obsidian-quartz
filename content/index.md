@@ -1,9 +1,9 @@
 ---
 publish: true
-title: The Inner Maze | 迷宫入口
+title: 迷宫入口
 created: 2026-11-04T20:15:35.044Z
-modified: 2026-11-06T09:36:33.998Z
-published: 2026-11-06T09:36:33.998Z
+modified: 2026-11-06T09:41:51.320Z
+published: 2026-11-06T09:41:51.320Z
 socialImage: /avatar.jpeg
 ---
 

@@ -204,9 +204,10 @@ plugins:
   - source: "@quartz-community/footer"
     enabled: true
     options:
+      text: "The maze wasn’t meant for you."
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        Host—1528: /about
+        GitHub: https://github.com/SoaringhawkCheng
     layout:
       position: footer
       priority: 50

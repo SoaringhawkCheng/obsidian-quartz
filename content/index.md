@@ -2,7 +2,8 @@
 publish: true
 title: 迷宫入口
 created: 2026-11-04T20:15:35.044Z
-modified: 2026-11-06T08:48:21.348Z
+modified: 2026-11-06T08:53:10.486Z
+socialImage: /avatar.jpeg
 ---
 
 > Consciousness isn’t a journey upward, but a journey inward.

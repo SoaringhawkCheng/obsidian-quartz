@@ -2,8 +2,8 @@
 publish: true
 title: 「Linux内核设计与实现&深入理解Linux内核」学习笔记
 created: 2020-05-01 22:17:27
-modified: 2026-11-06T07:03:36.445Z
-published: 2026-11-06T07:03:36.445Z
+modified: 2026-11-06T09:33:12.723Z
+published: 2026-11-06T09:33:12.723Z
 tags:
 sources:
   - https://book.douban.com/subject/6097773/
@@ -450,13 +450,13 @@ sched\_entity中的vruntime，存放进程的虚拟运行时间，vruntime并不
     (2)CPU取指优化，用 wmb/rmb等防止
    优化屏障（optimization barrier)：barrier()宏， 原语保证编译程序不会混淆 原语之前 的汇编语言指令 和 原语之后 的汇编语言指令。
    内存屏障(memory barrier)：保证原语之后 的操作 一定要在 原语之前的操作已经完成后 才执行。Pentium4引入lfence、sfence、mfence等汇编指令，有效的实现 读内存屏障、写内存屏障 和读-写内存屏障。
-   asm volatile(“lfence”) 等同于
-   asm volatile("lock; addl $0, 0(%%esp)”::”memory”)
+   `asm volatile(“lfence”)` 等同于
+   `asm volatile("lock; addl $0, 0(%%esp)”::”memory”)`
     lock使得这条指令成为CPU的一个内存屏障。
    4）自旋锁
      自旋锁：如果内核控制路径发现锁由运行在另一个CPU的内核控制路径”锁着“，就在当前CPU”旋转“，反复执行一条紧凑的循环指令，直到锁被释放。
-   一般来说：自旋锁所保护的每个临界区都是禁止内核抢占的。但是分为：具有内核抢占的spin_lock宏；非抢占式内核中的spin_lock宏。
-     spin_unlock宏:   movb $1,slp->slock
+   一般来说：自旋锁所保护的每个临界区都是禁止内核抢占的。但是分为：具有内核抢占的spin\_lock宏；非抢占式内核中的spin\_lock宏。
+     spin\_unlock宏:   movb \$1,slp->slock
     5)读/写自旋锁
     读/写自旋锁：允许多个内核控制路径 同时 读 同一个数据结构；如果一个内核控制路径想对这个结构进行写操作，那么它必须首先获得 读/写锁的 写锁，写锁 独占访问这个资源。
     6)顺序锁(seqlock)

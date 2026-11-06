@@ -2,7 +2,7 @@
 publish: true
 title: 「实战Java虚拟机：JVM故障诊断与性能优化」
 created: 2021-11-06 19:57:01
-modified: 2026-11-04T21:05:10.183Z
+modified: 2026-11-06T07:06:57.234Z
 ---
 
 # 一、初探Java虚拟机
@@ -13,9 +13,9 @@ modified: 2026-11-04T21:05:10.183Z
 
 ## 2.1 运行时数据区域
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/marea17.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-001.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/marea18.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-002.png]]
 
 ### 2.1.1 Java栈
 
@@ -27,7 +27,7 @@ modified: 2026-11-04T21:05:10.183Z
 - 操作数栈：方法执行过程中产生的中间计算结果、临时变量
 - 动态链接主要服务一个方法需要调用其他方法的场景。在 Java 源文件被编译成字节码文件时，所有的变量和方法引用都作为符号引用（Symbilic Reference）保存在 Class 文件的常量池里。当一个方法要调用其他方法，需要将常量池中指向方法的符号引用转化为其在内存地址中的直接引用。动态链接的作用就是为了将符号引用转换为调用方法的直接引用。
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/jvm-stack.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-003.png]]
 
 #### 2.1.1.2 本地方法栈
 
@@ -51,11 +51,11 @@ NIO是基于Channel和Buffer的I/O方式，直接用native方法分配native内�
 
 运行时常量池、方法区、字符串常量池这些都是不随虚拟机实现而改变的逻辑概念，是公共且抽象的，Metaspace、Heap 是与具体某种虚拟机实现相关的物理概念，是私有且具体的。
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/method-area-jdk1.6.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-004.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/method-area-jdk1.7.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-005.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/method-area-jdk1.8.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-006.png]]
 
 #### 2.1.4.1 版本变化
 
@@ -89,7 +89,7 @@ JVM 为了提升性能和减少内存消耗针对字符串（String 类）专门
 
 HotSpot 虚拟机中字符串常量池是StringTable，底层的实现是一个hashSet，保存的是字符串对象的引用，字符串对象的引用指向堆中的字符串对象
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/string-pool.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-007.png]]
 
 ```
 String str1 = "abcd"; //先检查字符串常量池中有没有"abcd"，如果字符串常量池中没有，则创建一个，然后 str1 指向字符串常量池中的对象，如果有，则直接将 str1 指向"abcd"；
@@ -146,9 +146,9 @@ String str3 = str2.intern();
 
 ### 2.2.3 对象内存引用
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/object-handler.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-008.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/object-pointer.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-009.png]]
 
 使用句柄来访问的最大好处是 reference 中存储的是稳定的句柄地址，在对象被移动时只会改变句柄中的实例数据指针，而 reference 本身不需要修改。使用直接指针访问方式最大的好处就是速度快，它节省了一次指针定位的时间开销。
 
@@ -348,7 +348,7 @@ jhat虚拟机堆转储快照分析工具
 
 [笔记](https://note.youdao.com/ynoteshare/index.html?id=9cc3963222a194e90f1ac8a08ed7dd45\&type=note&_time=1654517637002)
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/life-cycle.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-010.png]]
 
 ## 流程
 
@@ -372,7 +372,7 @@ jhat虚拟机堆转储快照分析工具
 
 ### 加载
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/class-load.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-011.png]]
 
 加载类时，Java虚拟机必须完成一下工作：
 
@@ -471,7 +471,7 @@ class StaticB {
 
 ### 双亲委托模式
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/classloader.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-012.png]]
 
 String.class.getClassLoader()获取对应的类加载器，如果得到的是null，那么这个类的类加载器是启动类加载器
 
@@ -481,7 +481,7 @@ String.class.getClassLoader()获取对应的类加载器，如果得到的是nul
 
 两个不同ClassLoader加载同一个类，虚拟机内部会认为这两个类是完全不同的
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/jvm-in-action/hotswap.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150657-013.png]]
 
 # 十一、字节码执行
 

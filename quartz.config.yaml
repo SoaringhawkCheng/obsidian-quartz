@@ -206,8 +206,7 @@ plugins:
     options:
       text: "The maze wasn’t meant for you."
       links:
-        Host—1528: /about
-        GitHub: https://github.com/SoaringhawkCheng
+        Host1528: /about
     layout:
       position: footer
       priority: 50

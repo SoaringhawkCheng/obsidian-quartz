@@ -3,6 +3,13 @@ publish: true
 title: 「Linux内核设计与实现&深入理解Linux内核」学习笔记
 created: 2020-05-01 22:17:27
 modified: 2026-11-06T07:03:36.445Z
+published: 2026-11-06T07:03:36.445Z
+tags:
+sources:
+  - https://book.douban.com/subject/6097773/
+  - https://book.douban.com/subject/2287506/
+  - https://book.douban.com/subject/24708145/
+  - https://book.douban.com/subject/4843567/
 ---
 
 ## 绪论

@@ -3,6 +3,10 @@ publish: true
 title: 「从Paxos到Zookeeper：分布式一致性原理与实践」学习笔记
 created: 2019-09-28 17:00:38
 modified: 2026-11-06T07:06:03.401Z
+published: 2026-11-06T07:06:03.401Z
+tags:
+source:
+  - https://book.douban.com/subject/26292004/
 ---
 
 # 前言

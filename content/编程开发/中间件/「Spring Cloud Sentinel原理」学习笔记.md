@@ -3,6 +3,10 @@ publish: true
 title: 「Spring Cloud Sentinel原理」学习笔记
 created: 2023-05-01T12:09:00
 modified: 2026-11-04T20:10:54.996Z
+published: 2026-11-04T20:10:54.996Z
+tags:
+source:
+  - https://www.jianshu.com/u/8c1316e385d7
 ---
 
 # 零、Sentinel

@@ -3,6 +3,10 @@ publish: true
 title: 「Redis设计与实现」学习笔记
 created: 2020-05-12 14:38:09
 modified: 2026-11-06T07:05:09.685Z
+published: 2026-11-06T07:05:09.685Z
+tags:
+source:
+  - https://book.douban.com/subject/25900156/
 ---
 
 # 数据结构与对象

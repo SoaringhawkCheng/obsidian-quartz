@@ -3,6 +3,10 @@ publish: true
 title: 「Java并发实现原理：JDK源码剖析」学习笔记
 created: 2021-11-12 15:51:25
 modified: 2026-11-06T07:06:39.545Z
+published: 2026-11-06T07:06:39.545Z
+tags:
+source:
+  - https://book.douban.com/subject/35013531/
 ---
 
 # 一、线程基础

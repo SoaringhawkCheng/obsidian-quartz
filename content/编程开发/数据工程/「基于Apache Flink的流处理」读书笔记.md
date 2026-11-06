@@ -3,8 +3,14 @@ publish: true
 title: 「基于Apache Flink的流处理」读书笔记
 created: 2026-10-18 11:26
 modified: 2026-11-03T12:31:27.164Z
+published: 2026-11-03T12:31:27.164Z
 tags:
   - 
+  - 
+source:
+  - "[[Stream Processing with Apache Flink.pdf|《《基于Apache Flink的流处理》]]"
+  - https://www.cnblogs.com/t0ugh/tag/flink/
+  - https://www.zhihu.com/people/zhu-shen-12-30/posts
 ---
 
 # 一、状态化流处理概述

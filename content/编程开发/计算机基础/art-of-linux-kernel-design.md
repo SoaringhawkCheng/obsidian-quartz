@@ -3,6 +3,10 @@ publish: true
 title: 「Linux内核设计的艺术」学习笔记
 created: 2020-05-24 23:53:35
 modified: 2026-11-04T20:41:33.867Z
+published: 2026-11-04T20:41:33.867Z
+tags:
+categories:
+  - https://book.douban.com/subject/24708145/
 ---
 
 ## 开机加电到执行main函数前的过程

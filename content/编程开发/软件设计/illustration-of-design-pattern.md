@@ -3,6 +3,10 @@ publish: true
 title: 「图解设计模式」学习笔记
 created: 2022-03-21 15:43:42
 modified: 2026-11-06T07:05:11.981Z
+published: 2026-11-06T07:05:11.981Z
+tags:
+source:
+  - https://book.douban.com/subject/26933281/
 ---
 
 ![[编程开发/软件设计/素材附件/20261106-150511-001.png]]

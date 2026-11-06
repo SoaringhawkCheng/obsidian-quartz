@@ -3,6 +3,10 @@ publish: true
 title: 「Spring Boot启动源码」学习笔记
 created: 2023-04-30T12:20:00
 modified: 2026-11-04T20:23:18.659Z
+published: 2026-11-04T20:23:18.659Z
+tags:
+source:
+  - https://book.douban.com/subject/30452948/
 ---
 
 # 一、启动类

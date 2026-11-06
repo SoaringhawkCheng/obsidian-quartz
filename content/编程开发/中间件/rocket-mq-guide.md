@@ -3,6 +3,10 @@ publish: true
 title: 「RocketMQ开发者指南」学习笔记
 created: 2020-06-28 21:09:09
 modified: 2026-11-06T07:05:34.779Z
+published: 2026-11-06T07:05:34.779Z
+tags:
+source:
+  - https://github.com/apache/rocketmq/tree/master/docs/cn
 ---
 
 # 概念

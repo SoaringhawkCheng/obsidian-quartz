@@ -3,6 +3,10 @@ publish: true
 title: 「MySQL技术内幕·InnoDB存储引擎」学习笔记
 created: 2019-06-15 21:09:15
 modified: 2026-11-06T07:05:02.418Z
+published: 2026-11-06T07:05:02.418Z
+tags:
+source:
+  - https://book.douban.com/subject/2470814
 ---
 
 # 体系结构

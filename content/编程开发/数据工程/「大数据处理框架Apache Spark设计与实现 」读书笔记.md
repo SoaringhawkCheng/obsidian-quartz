@@ -3,8 +3,13 @@ publish: true
 title: 「大数据处理框架Apache Spark设计与实现 」读书笔记
 created: 2026-10-18 11:27
 modified: 2026-11-04T13:33:55.472Z
+published: 2026-11-04T13:33:55.472Z
 tags:
   - 
+  - 
+source:
+  - https://book.douban.com/subject/35140409/
+  - https://github.com/JerryLead/SparkInternals/tree/master/markdown
 ---
 
 # 一、概览

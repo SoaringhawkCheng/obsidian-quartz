@@ -3,6 +3,10 @@ publish: true
 title: 「高并发系统设计40问」学习笔记（上）
 created: 2022-04-15 17:18:57
 modified: 2026-11-06T07:05:19.335Z
+published: 2026-11-06T07:05:19.335Z
+tags:
+source:
+  - https://zq99299.github.io/note-architect/hc/
 ---
 
 # 一、基础篇

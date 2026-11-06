@@ -3,6 +3,12 @@ publish: true
 title: 「深入理解Kafka」学习笔记
 created: 2020-05-20 12:08:36
 modified: 2026-11-06T07:06:06.657Z
+published: 2026-11-06T07:06:06.657Z
+tags:
+categories:
+  - https://book.douban.com/subject/30437872/
+  - https://blog.csdn.net/wk52525/article/details/96985534
+  - https://blog.csdn.net/wk52525/article/details/98070770
 ---
 
 ## 第1章 初始Kakfa

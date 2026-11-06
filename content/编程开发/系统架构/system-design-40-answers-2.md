@@ -3,6 +3,10 @@ publish: true
 title: 「高并发系统设计40问」学习笔记 （下）
 created: 2022-04-15 17:18:58
 modified: 2026-11-06T07:05:26.693Z
+published: 2026-11-06T07:05:26.693Z
+tags:
+source:
+  - https://zq99299.github.io/note-architect/hc/
 ---
 
 # 五、分布式服务

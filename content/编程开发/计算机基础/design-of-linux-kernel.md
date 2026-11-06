@@ -2,14 +2,14 @@
 publish: true
 title: 「Linux内核设计与实现&深入理解Linux内核」学习笔记
 created: 2020-05-01 22:17:27
-modified: 2026-11-04T19:49:43.602Z
+modified: 2026-11-06T07:03:36.445Z
 ---
 
 ## 绪论
 
 ### 内核结构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/os-architecture.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-001.png]]
 
 GNU C库，提供了链接内核的系统调用接口，还提供了在用户空间应用程序和内核之间进行转换的机制
 
@@ -72,7 +72,7 @@ linux内核分三层：
 
 #### 地址空间划分
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/address-space.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-002.png]]
 
 内核地址空间存放的是内核代码和数据
 
@@ -82,7 +82,7 @@ Linux使用两级保护机制: 0级供内核使用，3级供用户使用
 
 #### 地址映射模型
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/mmu.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-003.png]]
 
 IOMMU，IO管理单元，作用是连接DMA-capable I/O总线（Direct Memory Access-capable I/O Bus）和主存（main memory），IOMMU将设备访问的虚拟地址转化为物理地址
 
@@ -90,7 +90,7 @@ DMA(direct memory access)，直接存储器访问，传输将数据从一个地�
 
 MMU，内存管理单元，是负责处理CPU的内存访问请求的计算机请求，功能包括虚拟地址到物理地址转换
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/address-mapping.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-004.png]]
 
 进程代码中的地址是逻辑地址，经过全局描述符表GDT映射为线性地址，经过TLB和PTE映射为物理地址
 
@@ -138,7 +138,7 @@ task\_struct 进程描述符 包含进程信息
 
 #### 进程描述符
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/kernel-stack.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-005.png]]
 
 进程的thread\_info和内核栈放在连续的两页框中，thread\_info中的task域存放的是指向task struct的指针
 
@@ -159,7 +159,7 @@ task struct成员：
 
 #### 进程状态
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/process-state.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-006.png]]
 
 #### 进程家族树
 
@@ -479,7 +479,7 @@ sched\_entity中的vruntime，存放进程的虚拟运行时间，vruntime并不
 
 ### 内存管理结构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/uma.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-007.png]]
 
 现代计算机的内存组织形式包括UMA和NUMA，其中UMA中所有cpu访问内存的速度都一样快，而在NUMA系统中，每个cpu访问不同内存的速度并不一样。通常，NUMA计算机每个cpu都有自己的本地内存，各个cpu不仅可以访问自己的本地内存，也可以访问其它cpu的内存，但是访问本地内存的速度最快，访问其它cpu内存的速度依其与本cpu的距离增加而依次减慢。
 
@@ -488,7 +488,7 @@ sched\_entity中的vruntime，存放进程的虚拟运行时间，vruntime并不
 **mem\_mmap**内核全局变量，包含系统中所有的物理内存对应的page数组
 
 Linux对内存的管理划分成三个层次，分别是Node、Zone、Page。对这三个层次简介如下：
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/mem-tree.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-008.png]]
 
 层次|说明|
 \---|---|
@@ -498,7 +498,7 @@ Page(页)|每一个管理区又进一步被划分为多个页面，页面是内�
 
 #### 物理内存分区
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/physical-zone.jpg?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-009.jpg]]
 
 内核把物理内存划分为不同的区：
 
@@ -510,7 +510,7 @@ Page(页)|每一个管理区又进一步被划分为多个页面，页面是内�
 
 #### 内存分区介绍
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/virtual-zone-mapping.jpg?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-010.jpg]]
 
 - 低端内存
 
@@ -526,7 +526,7 @@ ZONE\_DMA的范围是0~16M，该区域的物理页面专门供I/O设备的DMA使
 
 ### 内核地址空间
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/kernel-virtual-zone.jpg?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-011.jpg]]
 
 #### 直接映射空间(PAGE\_OFFSET~VMALLOC\_START)
 
@@ -557,13 +557,13 @@ kmalloc和\_\_get\_free\_page()分配的是这里的页面，二者是借助slab
 
 ### 进程地址空间
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/process-space.jpg?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-012.jpg]]
 
 ### 内存分配系统
 
 #### 伙伴系统(页分配)
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/buddy.gif?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-013.gif]]
 
 实际应用中，经常需要分配一组连续的页框，而频繁地申请和释放不同大小的连续页框，必然导致在已分配页框的内存块中分散了许多小块的空闲页框。这样，即使这些页框是空闲的，其他需要分配连续页框的应用也很难得到满足。
 
@@ -573,8 +573,8 @@ kmalloc和\_\_get\_free\_page()分配的是这里的页面，二者是借助slab
 
 #### slab分配层
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/slab.png?raw=true)
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/kmem-cache.gif?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-014.png]]
+![[编程开发/计算机基础/素材附件/20261106-150336-015.gif]]
 
 slab是Linux操作系统的一种内存分配机制。其工作是针对一些经常分配并释放的对象，如进程描述符等，这些对象的大小一般比较小，如果直接采用伙伴系统来进行分配和释放，不仅会造成大量的内碎片，而且处理速度也太慢
 
@@ -584,7 +584,7 @@ slab是Linux操作系统的一种内存分配机制。其工作是针对一些�
 
 ### 内存分配方式
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/mem-alloc.jpg?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-016.jpg]]
 
 #### kmalloc
 
@@ -592,8 +592,8 @@ slab是Linux操作系统的一种内存分配机制。其工作是针对一些�
 
 #### vmalloc
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/vmalloc.png?raw=true)
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/vmalloc.jpg?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-017.png]]
+![[编程开发/计算机基础/素材附件/20261106-150336-018.jpg]]
 
 优先使用ZONE\_HIGHMEM，当内存不够才分配ZONE\_NORMAL。分配的物理地址不连续；一般分配大内存，需要页表。vmalloc分配的物理页不会被交换出去
 
@@ -607,7 +607,7 @@ slab是Linux操作系统的一种内存分配机制。其工作是针对一些�
 
 #### 按进程分配
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/interrupt-stack.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-019.png]]
 内核栈 每个进程都有1-2页固定大小的内核栈
 
 中断栈 中断栈为每个进程提供了一个用于中断处理程序的栈，中断处理程序不用再和被中断进程共享一个内核栈，对每个进程仅仅耗费了一页
@@ -622,7 +622,7 @@ slab是Linux操作系统的一种内存分配机制。其工作是针对一些�
 
 ### 文件系统抽象层
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/vfs-architecture.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-020.png]]
 
 虚拟文件系统(VFS)是linux内核和存储设备之间的抽象层，主要有以下好处。
 
@@ -641,8 +641,8 @@ UNIX文件系统的一些概念
 
 ### VFS对象和数据结构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/vfs-obj.png?raw=true)
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/vfs-obj-mapping.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-021.png]]
+![[编程开发/计算机基础/素材附件/20261106-150336-022.png]]
 VFS主要有4个对象类型：
 
 1. 超级块对象 代表一个具体的已安装文件系统
@@ -692,8 +692,8 @@ vfsmount 描述一个安装文件系统的实例
 
 #### 进程相关数据结构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/vfs-object.gif?raw=true)
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/prosess-file.gif?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-023.gif]]
+![[编程开发/计算机基础/素材附件/20261106-150336-024.gif]]
 
 file\_struct task\_struct->files目录项指向，打开的文件及文件描述符
 
@@ -705,7 +705,7 @@ namespace task\_struct->mmt\_namespace指向，命名空间，所有进程共享
 
 #### 磁盘结构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/fs-structure.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-025.png]]
 MBR： 主引导分区。
 
 自举块（引导分区Boot Sector）：分区中文件系统自身引导程序存放的地方。
@@ -730,23 +730,23 @@ i节点（inode）： 存储文件相关信息（不包括文件名）。
 
 #### 三级间接寻址
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/3-level-inode.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-026.png]]
 
 文件系统通过三级间接寻址的方式来提高文件大小的上限。块大小若以1 block计算，文件大小的上限为16G，若以4 block为块大小，那文件大小的上限超过了1T；ext4文件系统中，数据指针有256B，那文件大小上限就非常大了；
 
 #### 数据块存储内容
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/data-block-structure.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-027.png]]
 
 数据块中存储的是一条一条的记录项，每条记录项都由文件名、inode编号、记录长度(该记录项首地址到下一条记录项的首地址的长度)。每一个记录项就是该目录下“ls -a”的结果
 
 #### 普通文件结构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/file-structure.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-028.png]]
 
 #### 目录文件结构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/entry-structure.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-029.png]]
 
 ## 块I/O层
 
@@ -780,7 +780,7 @@ I/O设备主要有2类:
 
 #### 缓冲区buffer cache
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/page-block.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-030.png]]
 
 每个块都是一个缓冲区，同时对每个块都定义一个缓冲区头来描述它。
 
@@ -795,7 +795,7 @@ I/O设备主要有2类:
 
 #### bio
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/bio.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-031.png]]
 
 目前，块IO操作的基本容器由bio结构体表示
 
@@ -811,13 +811,13 @@ bio相当于在缓冲区上又封装了一层，使得内核在 I/O操作时只�
 
 ### IO调度
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/page-cache-bio.jpg?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-032.jpg]]
 
 块设备将它们挂起的快IO请求保存在请求队列reques\_queue中，队列中的reques结构体包含多个bio
 
 ## 进程地址空间
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/process-architecture.gif?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-033.gif]]
 
 ### 内存描述符
 
@@ -845,7 +845,7 @@ mm\_struct中的mm\_users计数降到零，将调用mmdrop函数
 
 ### 虚拟内存区域
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/vm-area-struct.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-034.png]]
 
 vm\_area\_struct描述了指定地址空间内连续区间上的一个独立内存范围，比如堆和栈就是一个内存区域
 
@@ -870,7 +870,7 @@ vm\_area\_struct->anon\_vma 指向anon\_vma，匿名线性区描述符
 
 #### 文件映射
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/file-mapping.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-035.png]]
 
 address\_space用于管理文件映射的页面的结构
 
@@ -884,7 +884,7 @@ address\_space->page\_tree域是一个包含所有page的radix树，指定文件
 
 #### 匿名映射
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/anonymous-mapping.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-036.png]]
 
 匿名文件的共享映射，内核创建一个初始都是0的物理内存区域，然后多个进程的vm\_area\_struct指向这个共享的物理内存区域，对该区域内容的修改对所有进程可见。匿名文件在页回收时被交换到交换区
 
@@ -892,7 +892,7 @@ address\_space->page\_tree域是一个包含所有page的radix树，指定文件
 
 ### 页表
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/pte.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-037.png]]
 地址空间中的地址都是虚拟内存中的地址，而CPU需要操作的是物理内存，所以需要一个将虚拟地址映射到物理地址的机制。
 
 这个机制就是页表，linux中使用3级页面来完成虚拟地址到物理地址的转换。
@@ -905,7 +905,7 @@ address\_space->page\_tree域是一个包含所有page的radix树，指定文件
 
 ## 页高速缓存
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/read-disk.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-038.png]]
 
 页高速缓存是内核所使用的的主要磁盘高速缓存(此外还有inode高速缓存和dentry高速缓存)
 几乎所有的文件读写都依赖于页高速缓存，内核开始一个读操作，检查需要的数据是否在页高速缓存中
@@ -929,7 +929,7 @@ address\_space->page\_tree域是一个包含所有page的radix树，指定文件
 
 #### 标准IO
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/io.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-039.png]]
 
 缓存I/O的优点：1）在一定程度上分离了内核空间和用户空间，保护系统本身的运行安全；2）可以减少读盘的次数，从而提高性能
 
@@ -937,7 +937,7 @@ address\_space->page\_tree域是一个包含所有page的radix树，指定文件
 
 #### 直接IO
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/directio.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-040.png]]
 
 直接 I/O 访问文件方式减少了一次数据拷贝和一些系统调用的耗时，很大程度降低了 CPU 的使用率以及内存的占用
 
@@ -947,7 +947,7 @@ address\_space->page\_tree域是一个包含所有page的radix树，指定文件
 
 #### 文件映射
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/mmap.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-041.png]]
 
 当你映射一个文件时，它的内容不会立即全部放入内存，而是通过页面错误（Page Fault）按需导入。错误处理程序在获得具有所需文件内容的页帧后 将虚拟页映射到页缓存
 
@@ -1004,7 +1004,7 @@ mapping指向address\_space或者anon\_vma或者空(交换高速缓存)，index�
 
 #### 文件映射反向映射
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/file-page-remap.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-042.png]]
 
 address\_space->i\_mmap是个radix优先搜索树PST，PST的主要作用是执行反向映射vm\_area\_struct，当多个进程的线性区映射相同文件的相同部分，叶子节点是一个双向链表
 
@@ -1012,11 +1012,11 @@ address\_sapce->i\_mmap\_nonlinear存放一个双向链表，成员是非线性�
 
 #### 匿名映射反向映射
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/anonymous-page-remap.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-043.png]]
 
 ### LRU链表
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/zone-list.jpg?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-044.jpg]]
 
 Linux内核为每一片物理内存区域(zone)维护active\_list 和inactive\_list两个双向 链表，这两个list主要用来实现物理内存的回收。这两个链表上除了文件Cache之外，还包括其它匿名(Anonymous)内存，如进程堆栈等
 
@@ -1041,7 +1041,7 @@ Linux内核为每一片物理内存区域(zone)维护active\_list 和inactive\_l
 
 #### 交换区描述符
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/swap-area-data-structure.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-045.png]]
 
 每个交换区由一组页槽page slot组成，第一页槽永久存放有关交换区的信息，union swap\_header
 
@@ -1051,7 +1051,7 @@ swap\_map是一个计数器数组，表示共享换出页的进程数
 
 #### 换出页标识符
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-linux-kernel/swap-page-identifier.png?raw=true)
+![[编程开发/计算机基础/素材附件/20261106-150336-046.png]]
 
 当页被换出是，其标识符就作为页表项插入页表中，进程根据虚拟地址去页表查：
 

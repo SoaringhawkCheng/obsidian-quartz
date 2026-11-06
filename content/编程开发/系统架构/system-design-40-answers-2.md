@@ -2,7 +2,7 @@
 publish: true
 title: 「高并发系统设计40问」学习笔记 （下）
 created: 2022-04-15 17:18:58
-modified: 2026-11-06T05:10:03.601Z
+modified: 2026-11-06T07:05:26.693Z
 ---
 
 # 五、分布式服务
@@ -301,7 +301,7 @@ Agent 主要收集的是组件服务端的信息，比如用agent链接memcached
 - 压测数据隔离模块
 - 系统健康度检查和压测流量干预模块
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/system-design-40-answers-2/stress.jpg?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150526-001.jpg]]
 
 ### 6.3.1 压测数据产生
 

@@ -2,7 +2,7 @@
 publish: true
 title: 「RocketMQ开发者指南」学习笔记
 created: 2020-06-28 21:09:09
-modified: 2026-11-04T20:54:57.568Z
+modified: 2026-11-06T07:05:34.779Z
 ---
 
 # 概念
@@ -103,7 +103,7 @@ RocketMQ会为每个消费组都设置一个Topic名称为“%RETRY%+consumerGro
 
 ### 存储结构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/rocket-mq-guide/rocketmq_design_1.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150534-001.png]]
 
 CommitLog：消息主体以及元数据的存储主体，
 
@@ -113,7 +113,7 @@ IndexFile：IndexFile（索引文件）提供了一种可以通过key或时间�
 
 #### 消息刷盘
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/rocket-mq-guide/rocketmq_design_2.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150534-002.png]]
 
 (1) 同步刷盘：如上图所示，只有在消息真正持久化至磁盘后RocketMQ的Broker端才会真正返回给Producer端一个成功的ACK响应。同步刷盘对MQ消息可靠性来说是一种不错的保障，但是性能上会有较大影响，一般适用于金融业务应用该模式较多。
 
@@ -125,7 +125,7 @@ IndexFile：IndexFile（索引文件）提供了一种可以通过key或时间�
 
 ### 事务消息
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/rocket-mq-guide/rocketmq_design_10.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150534-003.png]]
 
 #### 消息流程
 
@@ -153,7 +153,7 @@ IndexFile：IndexFile（索引文件）提供了一种可以通过key或时间�
 
 #### 消息设计
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/rocket-mq-guide/rocketmq_design_11.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150534-004.png]]
 
 1. 事务消息在一阶段对用户不可见
 
@@ -167,7 +167,7 @@ IndexFile：IndexFile（索引文件）提供了一种可以通过key或时间�
 
    在完成一阶段写入一条对用户不可见的消息后，二阶段如果是Commit操作，则需要让消息对用户可见；如果是Rollback则需要撤销一阶段的消息。先说Rollback的情况。对于Rollback，本身一阶段的消息对用户是不可见的，其实不需要真正撤销消息（实际上RocketMQ也无法去真正的删除一条消息，因为是顺序写文件的）。但是区别于这条消息没有确定状态（Pending状态，事务悬而未决），需要一个操作来标识这条消息的最终状态。RocketMQ事务消息方案中引入了Op消息的概念，用Op消息标识事务消息已经确定的状态（Commit或者Rollback）。如果一条事务消息没有对应的Op消息，说明这个事务的状态还无法确定（可能是二阶段失败了）。引入Op消息后，事务消息无论是Commit或者Rollback都会记录一个Op操作。Commit相对于Rollback只是在写入Op消息前创建Half消息的索引。
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/rocket-mq-guide/rocketmq_design_12.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150534-005.png]]
 
 3. Op消息的存储和对应关系
 

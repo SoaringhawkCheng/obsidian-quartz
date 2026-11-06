@@ -2,18 +2,18 @@
 publish: true
 title: 「深入理解Kafka」学习笔记
 created: 2020-05-20 12:08:36
-modified: 2026-11-04T20:54:15.652Z
+modified: 2026-11-06T07:06:06.657Z
 ---
 
 ## 第1章 初始Kakfa
 
 ### Kafka体系结构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/kafka-architecture.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-001.png]]
 
 服务代理节点broker：独立的服务节点或kafka实例
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/partition.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-002.png]]
 
 **kafka引入partition解决机器IO性能瓶颈**，topic包含多个partition
 
@@ -21,7 +21,7 @@ partition包含的消息不同，offset是消息在分区中标识，kafka保证
 
 partition是kafka的最小并行操作单元，单个partition数据写入可以并行化，partition消费只能被一个consumer线程消费
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/broker.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-003.png]]
 
 **kafka为分区引入多副本机制，提升容灾能力**
 
@@ -31,7 +31,7 @@ partition的每个副本必须分布在不同的broker上，才能实现有效�
 
 producer和consumer只和leader副本进行交互，follower只负责同步，消息相对滞后
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/offset.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-004.png]]
 
 分区中所有副本AR，同步中副本ISR，同步滞后副本OSR，AR=ISR+OSR
 
@@ -41,13 +41,13 @@ producer和consumer只和leader副本进行交互，follower只负责同步，�
 
 只有ISR集合的副本才有资格被选为leader，ISR集合中最小的LEO即为分区的HW
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/offset-2.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-005.png]]
 
 Kafka使用ISR有效权衡了数据可靠性和性能，既不是完全同步复制，也不是完全异步复制
 
 ## 第2章 生产者
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/producer-architecture.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-006.png]]
 
 ### 发送模式
 
@@ -73,7 +73,7 @@ acks=-1 or all ISR所有副本写入才能收到响应
 
 ### 消息消费
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/consumer-group.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-007.jpg]]
 
 一个消费组能订阅topic上所有分区，每个分区只能被一个消费组的一个consumer消费
 
@@ -89,7 +89,7 @@ acks=-1 or all ISR所有副本写入才能收到响应
 
 ### 多线程实现
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/consumer.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-008.png]]
 
 KafkaProducer是线程安全的，但KafkaConsumer是非线程安全的
 
@@ -97,13 +97,13 @@ KafkaProducer是线程安全的，但KafkaConsumer是非线程安全的
 
 ## 第4章 主题与分区
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/log.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-009.png]]
 
 ## 第5章 日志存储
 
 ### 文件布局
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/io.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-010.png]]
 
 不考虑多副本的情况，一个分区对应一个日志Log，Log被切分为多个LogSegment
 
@@ -115,7 +115,7 @@ Log在物理上只以文件夹的形式存储，LogSegment对应于磁盘上的�
 
 ### 日志索引
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/index.jpeg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-011.jpg]]
 
 ### 磁盘存储
 
@@ -123,13 +123,13 @@ Kafka使用mmap进行文件读写，大量使用了页缓存，这是实现高�
 
 ### 零拷贝
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/zero-copy.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-012.png]]
 
 ## 第6章 深入服务端
 
 ### 时间轮
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/time-wheel.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-013.png]]
 
 ### 延时操作
 
@@ -194,7 +194,7 @@ LEO和HW更新过程：
 
 而follower副本所在的节点只会记录自身的LEO，而不会记录其他副本的LEO
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/leo-hw-update.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-014.png]]
 
 如上图，从LEO和HW的更新过程可以看到，follower更新完消息1，下一轮fetch才能把HW更新为1
 
@@ -202,11 +202,11 @@ leader和follower的HW更新不是同步的，且滞后于follower消息写入�
 
 #### 数据丢失问题
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/data-loss-1.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-015.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/data-loss-2.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-016.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/data-loss-3.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-017.png]]
 
 follower副本恢复后会做两件事情：
 
@@ -215,11 +215,11 @@ follower副本恢复后会做两件事情：
 
 #### 数据不一致问题
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/hw-data-inconsistent-1.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-018.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/hw-data-inconsistent-2.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-019.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/hw-data-inconsistent-3.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-020.png]]
 
 ### 使用epoch
 
@@ -227,19 +227,19 @@ ack=-1只能解决日志写入同步，epoch解决了HW不同步带来的问题
 
 #### 解决数据丢失
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/epoch-data-loss-1.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-021.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/epoch-data-loss-2.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-022.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/epoch-data-loss-3.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-023.png]]
 
 #### 解决数据不一致
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/epoch-data-inconsistent-1.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-024.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/epoch-data-inconsistent-2.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-025.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/epoch-data-inconsistent-3.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-026.png]]
 
 ### 可靠性分析
 
@@ -267,7 +267,7 @@ ack=-1，保证所有副本日志写入成功后再返回，即使leader宕机�
 
 ### 延时队列
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/learning-kafka/delay-service.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150606-027.png]]
 
 先投递到内部主题，按照不同的延时等级来划分的，比如设定5s、10s、30s、1min、2min、5min、10min、20min、30min、45min、1hour、2hour这些按延时时间递增的延时等级
 

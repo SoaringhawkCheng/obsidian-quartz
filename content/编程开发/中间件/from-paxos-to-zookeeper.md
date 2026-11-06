@@ -2,7 +2,7 @@
 publish: true
 title: 「从Paxos到Zookeeper：分布式一致性原理与实践」学习笔记
 created: 2019-09-28 17:00:38
-modified: 2026-11-04T18:19:10.587Z
+modified: 2026-11-06T07:06:03.401Z
 ---
 
 # 前言
@@ -115,7 +115,7 @@ The system will continue to function when network patitions occur
 
 ### 2.1.1 2PC
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/2pc.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-001.png]]
 
 #### 流程
 
@@ -169,7 +169,7 @@ The system will continue to function when network patitions occur
 
 ### 2.1.2 3PC
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/3pc.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-002.jpg]]
 
 #### 流程
 
@@ -205,7 +205,7 @@ The system will continue to function when network patitions occur
 
 ## 2.2 Paxos算法
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-architecture.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-003.png]]
 
 **Paxos** 解决的什么问题呢，解决的就是保证每个节点执行相同的操作序列
 
@@ -237,7 +237,7 @@ The system will continue to function when network patitions occur
 
 #### 单点问题
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-single-point.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-004.png]]
 
 Q: 如果acceptor挂掉怎么办？
 
@@ -245,7 +245,7 @@ A: 多个acceptors，选中被大多数acceptors的值
 
 #### 平分提案
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-vote.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-005.png]]
 
 Q: Acceptor只接受第一个到达的值？
 
@@ -253,13 +253,13 @@ A: 如果同时提出提案，不会选中任何值，所以Acceptors必须可�
 
 #### 选择冲突
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-conflict-1.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-006.png]]
 
 Q: Acceptor接受所有到达的值？
 
 A: 可能会导致选择多个值，所以一旦一个值被选中，以后的提案必须提出/选择一样的值
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-conflict-2.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-007.png]]
 
 Q: 后提出的提案被现提出的提案覆盖
 
@@ -275,7 +275,7 @@ A: 时间戳+IP
 
 #### 算法流程
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-basic-paxos.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-008.png]]
 
 - prepare阶段
 
@@ -291,21 +291,21 @@ A: 时间戳+IP
 
 #### 提案覆盖
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-accept-value-1.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-009.png]]
 
 旧的值被选中，新的proposer发现并使用它
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-accept-value-2.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-010.png]]
 
 旧的值没有被钻中，但发现被接受了，新的proposer发现并使用它
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-accept-value-3.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-011.png]]
 
 旧的值没有被选中，也没有被发现接受了，新的proposer使用自己的值
 
 #### 算法缺陷
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/paxos-live-lock.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-012.png]]
 
 **活锁问题** 旧的提案被接受未被选中时，新的提案已被接受，因此旧提案不能被接受，循环往复
 
@@ -322,17 +322,17 @@ A: 时间戳+IP
 
 multi-paxos协议中有一个Leader。Leader是系统中唯一的Proposal，在lease租约周期内所有提案都有相同的ProposalId，可以跳过prepare阶段，议案只有accept过程
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-013.png]]
 
 #### 选择日志项
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-select-entry.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-014.jpg]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-select-log-entry-1.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-015.jpg]]
 
 #### 提高效率
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-leader-0.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-016.png]]
 
 众所周知Basic Paxos算法的Latency很高，串行运行Basic Paxos效率很差
 
@@ -351,55 +351,55 @@ Multi-Paxos算法希望找到多个Instance的Paxos算法之间的联系，从�
 
 - A/B/C三节点并行提交
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-leader-1.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-017.png]]
 
 这种情况下NodeA节点几乎每个Instance都收到其他节点发来的Prepare，导致Promise编号过大，迫使自己不断提升编号来Prepare。这种情况并未能找到任何的优化突破口
 
 - 只有A节点提交
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-leader-2.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-018.png]]
 
 这种情况我们会立刻发现，在没有其他节点提交的干扰下，每次Prepare的编号都是一样的。于是乎我们想，为何不把Promised(b)变成全局的？来看下图：
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-leader-3.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-019.png]]
 
 假设我们在Instance i进行Prepare(b)，我们要求对这个b进行Promise的生效范围是Instance\[i, ∞)，那么在i之后我们就无需在做任何Prepare了。可想而知，假设上图Instance 1之后都没有任何除NodeA之外其他节点的提交，我们就可以预期接下来Node A的Accept都是可以通过的。那么这个去Prepare状态什么时候打破？我们来看有其他节点进行提交的情况：
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-leader-4.png?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-020.png]]
 
 Instance 4出现了B的提交，使得Promised(b)变成了2(B), 从而导致Node A的Accept被拒绝。而NodeA如何继续提交？必须得提高自己的Prepare编号从而抢占Promised(b)。这里出现了很明显的去Prepare的窗口期Instance\[1,3]，而这种期间很明显的标志就是只有一个节点在提交。
 
 - 优化内容
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-efficiency.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-021.jpg]]
 
 Multi-Paxos通过改变Promised(b)的生效范围至全局的Instance，从而使得一些唯一节点的连续提交获得去Prepare的效果。Leader的作用是希望大部分时间都只有一个节点在提交，这样才能最大发挥Mulit-Paxos的优化效果
 
 #### 选主方法
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-leader-election.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-022.jpg]]
 
 实际上大多数系统都不会采用这种选举方式，它们会采用基于租约的方式
 
 #### 减少prepare
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-eliminate-prepare.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-023.jpg]]
 
 #### 复制完整性
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-full-disclosure.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-024.jpg]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-full-disclosure-1.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-025.jpg]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-full-disclosure-2.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-026.jpg]]
 
 #### 配置变更
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-configuration-change.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-027.jpg]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-configuration-change-1.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-028.jpg]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/from-paxos-to-zookeeper/multi-paxos-configuration-change-2.jpg?raw=true)
+![[编程开发/中间件/素材附件/20261106-150603-029.jpg]]
 
 # 第3章 Paxos的工程世界
 

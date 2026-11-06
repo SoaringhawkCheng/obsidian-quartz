@@ -2,14 +2,14 @@
 publish: true
 title: 「Redis设计与实现」学习笔记
 created: 2020-05-12 14:38:09
-modified: 2026-11-04T18:19:26.264Z
+modified: 2026-11-06T07:05:09.685Z
 ---
 
 # 数据结构与对象
 
 ## 简单动态字符串sds
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/1.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-001.png]]
 
 ```
 1. 记录字符串长度len，常数时间将获得字符串长度
@@ -20,7 +20,7 @@ modified: 2026-11-04T18:19:26.264Z
 4. 二进制安全，sds api以二进制的方式处理sds存放在buf数组里的数据
 ```
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/2.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-002.png]]
 
 ## 链表list
 
@@ -70,7 +70,7 @@ rehash
 
 ###
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/3.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-003.png]]
 
 ## 跳跃表skiplist
 
@@ -119,7 +119,7 @@ content
 
 ## 对象
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/4.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-004.png]]
 
 对象数据结构
 
@@ -152,7 +152,7 @@ embstr object和sdshdr在连续空间，只读，如果要写，从embstr转换�
 
 ## 数据库
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/5.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-005.png]]
 
 数据库
 
@@ -198,7 +198,7 @@ AOF
 
 ```
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/6.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-006.png]]
 
 ## RDB持久化
 
@@ -247,7 +247,7 @@ AOF重写步骤
 
 ## 事件
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/7.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-007.png]]
 
 文件事件
 
@@ -303,7 +303,7 @@ reply 可变输出缓冲区
 
 ## 服务器
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/8.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-008.png]]
 
 命令执行器step4 执行后续操作
 
@@ -324,7 +324,7 @@ if 有从服务器复制当前主服务器 将命令发给从服务器
 
 # 多机数据库
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/9.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-009.png]]
 
 ## 复制
 
@@ -399,7 +399,7 @@ PING命令 根据回复判断是否在线，回复类型+PONG，-LOADING，-MAST
 
 ## 集群(分布式数据库方案)
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/10.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-010.png]]
 
 集群
 
@@ -434,7 +434,7 @@ ASK 迁移槽的过程中使用的一种临时措施，客户端只会在接下�
 
 # 独立功能
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-of-redis/11.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150509-011.png]]
 
 ## 发布与订阅
 

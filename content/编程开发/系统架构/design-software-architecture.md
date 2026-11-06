@@ -2,29 +2,29 @@
 publish: true
 title: 「软件架构设计：大型网站技术架构与业务架构融合之道」学习笔记
 created: 2020-05-24 21:06:15
-modified: 2026-11-06T05:33:36.147Z
+modified: 2026-11-06T07:05:18.089Z
 ---
 
 [分布式共识博客](http://blog.kongfy.com/2016/05/%E5%88%86%E5%B8%83%E5%BC%8F%E5%85%B1%E8%AF%86consensus%EF%BC%9Aviewstamped%E3%80%81raft%E5%8F%8Apaxos/)
 [零拷贝](https://www.jianshu.com/p/193cae9cbf07)
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/%E5%88%86%E5%B8%83%E5%BC%8F.jpg?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-001.jpg]]
 
 ## 第4章 操作系统
 
 ### 零拷贝
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/zero-copy-0.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-002.png]]
 
 ![[编程开发/系统架构/素材附件/Pasted image 20261106132113.png]]
 
 上下文切换是CPU密集型的工作，数据拷贝是I/O密集型的工作。如果一次简单的传输就要像上面这样复杂的话，效率是相当低下的。零拷贝机制的终极目标，就是消除冗余的上下文切换和数据拷贝，提高效率
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/zero-copy-1.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-003.png]]
 ![[编程开发/系统架构/素材附件/Pasted image 20261106132129.png]]
 
 可见，不仅拷贝的次数变成了3次，上下文切换的次数也减少到了2次，效率比传统方式高了很多。但是它还并非完美状态，下面看一看让它变得更优化的方法
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/zero-copy-2.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-004.png]]
 
 在“基础”零拷贝方式的时序图中，有一个“write data to target socket buffer”的回环，在框图中也有一个从“Read buffer”到“Socket buffer”的大箭头。这是因为在一般的Block DMA方式中，源物理地址和目标物理地址都得是连续的，所以一次只能传输物理上连续的一块数据，每传输一个块发起一次中断，直到传输完成，所以必须要在两个缓冲区之间拷贝数据。
 
@@ -92,20 +92,20 @@ modified: 2026-11-06T05:33:36.147Z
 
 ## 如何保证分布式系统中接口调用的顺序性？
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/call-in-sequence-1.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-005.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/call-in-sequence-2.jpeg?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-006.jpg]]
 
 ## Raft算法
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/raft-log-index.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-007.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/raft-replicated-state-machine.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-008.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/raft-state-machine-safety.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-009.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/raft-state-transfer.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-010.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/raft-term.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-011.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/design-software-architecture/raft-two-disjoint-majorities.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150518-012.png]]

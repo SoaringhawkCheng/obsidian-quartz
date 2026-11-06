@@ -2,10 +2,10 @@
 publish: true
 title: 「图解设计模式」学习笔记
 created: 2022-03-21 15:43:42
-modified: 2026-11-06T05:15:10.531Z
+modified: 2026-11-06T07:05:11.981Z
 ---
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/illustration-of-design-pattern/mind.png?raw=true)
+![[编程开发/软件设计/素材附件/20261106-150511-001.png]]
 
 ## 零、前言
 
@@ -172,7 +172,7 @@ public class Singleton {
 2. 调用对象的构造方法、初始化成员字段；
 3. 将 instance 对象指向分配的内存空间
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/illustration-of-design-pattern/rank.png?raw=true)
+![[编程开发/软件设计/素材附件/20261106-150511-002.png]]
 
 为了解决此问题，我们可以使用关键字 volatile 来修饰 instance 对象，这样就可以防止 CPU 指令重排，从而完美地运行懒汉模式
 

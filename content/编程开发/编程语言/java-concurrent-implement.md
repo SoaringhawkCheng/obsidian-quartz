@@ -2,14 +2,14 @@
 publish: true
 title: 「Java并发实现原理：JDK源码剖析」学习笔记
 created: 2021-11-12 15:51:25
-modified: 2026-11-04T18:38:42.609Z
+modified: 2026-11-06T07:06:39.545Z
 ---
 
 # 一、线程基础
 
 ## 1.1 线程状态机
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/thread-state.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-001.png]]
 
 [笔记](https://www.jianshu.com/p/74295daa17c3)
 
@@ -61,7 +61,7 @@ JMM的关键技术点都是围绕多线程的原子性、可见性和有序性�
 
 #### 缓存一致性问题
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/os-cache-model.webp?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-002.webp]]
 
 如果一个变量在多个CPU中都存在缓存（一般在多线程编程时才会出现），那么就可能存在缓存不一致的问题
 
@@ -80,11 +80,11 @@ JMM的关键技术点都是围绕多线程的原子性、可见性和有序性�
 
 缓存一致性协议可以保证CPU缓存一致，但是对性能有很大的消耗，因此CPU的架构师在计算单元和L1之前又增加了 Store Buffer、Load Buffer。也就是说，往内存中写入一个变量，这个变量会保存在 Store Buffer 里面，稍后才异步写入L1中，同时同步写入主内存中
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/cpu-cache-model.webp?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-003.webp]]
 
 ### 有序性
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/jmm-rerank.webp?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-004.webp]]
 
 #### 重排序
 
@@ -94,7 +94,7 @@ JMM的关键技术点都是围绕多线程的原子性、可见性和有序性�
 - CPU指令重排序：当CPU写缓存时发现缓存区块正在被其他CPU占用，为了提高CPU处理性能，可能将后面的读缓存命令优先执行
 - CPU内存重排序：读写都是在 Load Buffer 和 Store Buffer 中完成的，缓存中的数据不会马上同步到主内存中去，因此数据同步到主内存中的顺序可能跟指令执行的顺序不一致，如下图所示
 
-![](https://raw.githubusercontent.com/SoaringhawkCheng/blog/master/source/_posts/java-concurrent-implement/cpu-memory-rerank.webp)
+![[编程开发/编程语言/素材附件/20261106-150639-005.webp]]
 
 #### as-if-serial
 
@@ -137,7 +137,7 @@ kfifo.c源代码中RingBuffer
 
 fullfence：loadfence + writefence
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/memory-barrier-instruct.webp?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-006.webp]]
 
 ### volatile
 
@@ -156,7 +156,7 @@ fullfence：loadfence + writefence
 
 # SDK并发包
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/concurrent-sdk-structure.webp?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-007.webp]]
 
 ## Atomic类
 
@@ -177,9 +177,9 @@ Atomic{type}Updater用来修改实例对象中的属性的值的，被修改变�
 
 ### 高并发原子累加器striped64
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/long-addr-1.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-008.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/long-addr-2.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-009.png]]
 
 多线程对变量进行CAS，高并发场景下仍不够快，将long拆成base和cells，求和的时候并不加锁，只能保证最终一致性
 
@@ -228,13 +228,13 @@ tryLock：非公平锁的一种，但是cas锁的state，如果失败就会返�
 
 ### Condition
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/lock-condition.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-010.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/condition-await.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-011.png]]
 
 从队列（同步队列和等待队列）的角度看await()方法，当调用await()方法时，相当于同步队列的首节点（获取了锁的节点）移动到Condition的等待队列中
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/java-concurrent-implement/condition-signal.png?raw=true)
+![[编程开发/编程语言/素材附件/20261106-150639-012.png]]
 
 调用Condition的signal()方法，将会唤醒在等待队列中等待时间最长的节点（首节点），在唤醒节点之前，会将节点移到同步队列中
 

@@ -2,7 +2,7 @@
 publish: true
 title: 「MySQL技术内幕·InnoDB存储引擎」学习笔记
 created: 2019-06-15 21:09:15
-modified: 2026-11-04T19:23:42.569Z
+modified: 2026-11-06T07:05:02.418Z
 ---
 
 # 体系结构
@@ -34,7 +34,7 @@ SQL语言分四类：数据查询语言DQL，数据操纵语言DML，数据定�
 
 ## InnoDB体系架构
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/innodb-storage-engine/1.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150502-001.png]]
 
 - innodb内存池
 
@@ -158,7 +158,7 @@ pipeline，写合并
 
 # 文件
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/innodb-storage-engine/2.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150502-002.png]]
 
 ## 日志文件
 
@@ -208,7 +208,7 @@ UNIX域套接字
 
 # 表
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/innodb-storage-engine/3.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150502-003.png]]
 
 ## 索引组织表
 
@@ -255,7 +255,7 @@ OLAP 在线分析处理 分区很好地提高查询性能
 
 # 事务
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/innodb-storage-engine/4.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150502-004.png]]
 
 ## 认识事务
 
@@ -353,7 +353,7 @@ TPS 每秒处理事务数
 
 # 索引与算法
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/innodb-storage-engine/5.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150502-005.png]]
 
 ## B+树索引
 
@@ -373,7 +373,7 @@ B+Tree的高度一般都在2~4层。mysql的InnoDB存储引擎在设计时是将
 
 # 锁
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/innodb-storage-engine/6.png?raw=true)
+![[编程开发/数据存储/素材附件/20261106-150502-006.png]]
 
 ## 锁的类型
 

@@ -2,7 +2,7 @@
 publish: true
 title: 「高并发系统设计40问」学习笔记（上）
 created: 2022-04-15 17:18:57
-modified: 2026-11-06T05:09:03.208Z
+modified: 2026-11-06T07:05:19.335Z
 ---
 
 # 一、基础篇
@@ -391,13 +391,13 @@ redis sentinel是在服务端提供的一种高可用方案
 
 浏览器在加载资源的时候，会先根据本地缓存资源的header中的信息(Expires 和 Cache-Control)来判断缓存是否过期。如果缓存没有过期，则会直接使用缓存中的资源；否则，会向服务端发起协商缓存的请求
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/system-design-40-answers-1/cache-controll.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150519-001.png]]
 
 #### 3.5.1.2 协商缓存
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/system-design-40-answers-1/last-modified.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150519-002.png]]
 
-![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/system-design-40-answers-1/etag.png?raw=true)
+![[编程开发/系统架构/素材附件/20261106-150519-003.png]]
 
 第一次请求静态资源，响应头有Etag字段，浏览器缓存这个字段。下次请求头里会有一个If-None-Match字段，并把Etag发给客户端。如果图片信息没有变化，则返回的304 Not Modified
 

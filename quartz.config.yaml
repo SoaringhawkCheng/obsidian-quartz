@@ -206,7 +206,7 @@ plugins:
     options:
       text: "The maze wasn’t meant for you."
       links:
-        Host1528: /about
+        Maze Host: /about
     layout:
       position: footer
       priority: 50

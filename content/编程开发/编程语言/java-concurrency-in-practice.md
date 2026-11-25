@@ -2,11 +2,12 @@
 publish: true
 title: 「Java并发编程实战」学习笔记
 created: 2022-01-30 17:11:29
-modified: 2026-11-06T07:12:53.075Z
-published: 2026-11-06T07:12:53.075Z
+modified: 2026-11-25T13:15:59.008Z
+published: 2026-11-25T13:15:59.008Z
 tags:
 source:
   - https://book.douban.com/subject/10484692/
+  - https://tuonioooo-notebook.gitbook.io/performance-optimization
 ---
 
 [多线程系列目录](https://www.jianshu.com/p/8c16aeea7e1a)

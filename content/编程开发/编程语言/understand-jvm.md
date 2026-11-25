@@ -2,21 +2,14 @@
 publish: true
 title: 「深入理解Java虚拟机」学习笔记
 created: 2021-11-24 23:53:35
-modified: 2026-11-25T12:55:54.617Z
-published: 2026-11-25T12:55:54.617Z
+modified: 2026-11-25T14:01:14.040Z
+published: 2026-11-25T14:01:14.040Z
 tags:
 source:
+  - https://book.douban.com/subject/24722612/
 ---
 
-> 书籍豆瓣链接：[《深入理解Java虚拟机》](https://book.douban.com/subject/24722612/)
->
-> 开始学习时间：
->
-> 预计完成时间：
->
-> 实际完成时间：
-
-<!--![](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/understand-jvm/mind2.png?raw=true)-->
+[思维导图](https://github.com/SoaringhawkCheng/blog/blob/master/source/_posts/understand-jvm/mind2.png?raw=true)
 
 [Java虚拟机原理图解](https://blog.csdn.net/luanlouis/category_9263262.html)
 

@@ -2,13 +2,14 @@
 publish: true
 title: 「实战Java虚拟机：JVM故障诊断与性能优化」
 created: 2021-11-06 19:57:01
-modified: 2026-11-06T07:06:57.234Z
-published: 2026-11-06T07:06:57.234Z
+modified: 2026-11-25T14:03:32.765Z
+published: 2026-11-25T14:03:32.765Z
 tags:
 source:
   - https://book.douban.com/subject/34441840/
   - https://book.douban.com/subject/34907497/
   - https://blog.csdn.net/gaofubo/article/details/106110276
+  - https://tuonioooo-notebook.gitbook.io/performance-optimization
 ---
 
 # 一、初探Java虚拟机

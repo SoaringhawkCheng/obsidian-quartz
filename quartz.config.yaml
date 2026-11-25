@@ -232,6 +232,7 @@ plugins:
         - description
         - tags
         - aliases
+        - source
       excludedProperties: []
       hidePropertiesView: false
       delimiters: ---
